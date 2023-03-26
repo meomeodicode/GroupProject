@@ -4,6 +4,7 @@ void addClass (Class* &c, string name)
 {
     Class* newClass = new Class;
     newClass->className = name;
+    newClass->students = nullptr;
     newClass->pNext = nullptr;
     newClass->pPrev = nullptr;
 
