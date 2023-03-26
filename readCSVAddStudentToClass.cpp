@@ -44,8 +44,8 @@ void readCSVAddStudentToClass (Class* &c)
                 }
                 else if (cnt == 6) {
                     socialID = tmp;
+                    addStudentToClass(c, id, firstName, lastName, gender, dob, socialID);
                 }
-                addStudentToClass(c, id, firstName, lastName, gender, dob, socialID);
             }
         }
     }
