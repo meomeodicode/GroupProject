@@ -1,3 +1,4 @@
+#include "addStudentToCourse.h"
 void addStudentToCourse(Student*& s, Course*& c)
 {
     if(c->students==nullptr)
