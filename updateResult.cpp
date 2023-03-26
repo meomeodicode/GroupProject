@@ -13,7 +13,7 @@ void updateResult(Course* &head, int id, int studentID)
      {
             if (cur->students->id == studentID)
             {
-                    while (cin>>input)
+                    while ((cin>>input)&&(count<=3))
                     {
                         if (count == 1) 
                         {
