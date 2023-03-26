@@ -1,8 +1,18 @@
 #include "addClass.h"
 
-void addClass (Class* &c)
+void addClass (Class* &c, string name)
 {
-    c = new Class;
-    c->pNext = nullptr;
-    c->pPrev = nullptr;
+    Class* newClass = new Class;
+    newClass->className = name;
+    newClass->pNext = nullptr;
+    newClass->pPrev = nullptr;
+
+    if (c == nullptr) {
+        c = newClass;
+    }
+    else {
+        newClass->pNext = c;
+        c->pPrev = newClass;
+        c = newClass;
+    }
 }
