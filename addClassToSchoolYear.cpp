@@ -1,19 +1,8 @@
-#include "addClassToSchoolYear.h"
-void addClassToSchoolYear(SchoolYear* &s,Class* newclass)
+#include "addClass.h"
+void addClassToSchoolYear(SchoolYear* &s,string classname)
 {
 
-    if (!s->c)
-    {
-        s->c=newclass;
 
-
-    }
-
-    else
-    {
-        s->c->pPrev=newclass;
-        s->c->pPrev->pNext=s->c;
-        s->c=s->c->pPrev;
-    }
+    addClass(s->c,classname);
 
 }
