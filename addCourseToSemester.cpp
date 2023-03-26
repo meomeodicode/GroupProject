@@ -1,5 +1,4 @@
-#include <bits/stdc++.h>
-#include "struct.h"
+#include "addCourseToSemester.h"
 void addCourseToSemester(Course *&cou, Semester *&Sem)
 {
     if(Sem->courses==nullptr)
