@@ -1,4 +1,4 @@
 #pragma once
 #include "struct.h"
 
-void addCourseToSemester (Course *&cou, Semester *&Sem);
+void addCourseToSemester (Semester *&Sem, string id, string courseName, string teacherName, string dayOfWeek, string Session);
