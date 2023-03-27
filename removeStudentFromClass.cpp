@@ -1,10 +1,10 @@
 #pragma once
 #include "removeStudentFromClass.h"
 
-void removeStudentFromClass(Class *c, int idSearch)
+void removeStudentFromClass(Class *c, string idSearch)
 {
     // Find the student in the students list
-    Student *cur = c->students;
+    Student* cur = c->students;
     while (cur != nullptr) {
         if (cur->id != idSearch) {
             cur = cur->pNext;
