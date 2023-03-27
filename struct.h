@@ -12,7 +12,7 @@ struct Date {
 
 // Course structure
 struct Course {
-    int id;
+    string id;
     string courseName;
     string teacherName;
     int credits;
@@ -24,23 +24,23 @@ struct Course {
     double totalMark;
     double otherMark;
     double courseGPA;
-    struct Class* c = nullptr;
-    struct Student* students = nullptr;
+    struct Class* c;
+    struct Student* students;
     Course* pNext;
     Course* pPrev;
 };
 
 // Student structure
 struct Student {
-    int id;
+    string id;
     string firstName;
     string lastName;
     string gender;
-    double overallGPA;
     Date dateOfBirth;
-    int socialID;
-    Course* courseTotal = nullptr;
-    Course* courseEnrol = nullptr;
+    string socialID;
+    double overallGPA;
+    Course* courseTotal;
+    Course* courseEnrol;
     Student* pNext;
     Student* pPrev;
 };
@@ -48,7 +48,7 @@ struct Student {
 // Class structure
 struct Class {
     string className;
-    Student* students = nullptr;
+    Student* students;
     Class* pNext;
     Class* pPrev;
 };
@@ -58,7 +58,7 @@ struct Semester {
     string schoolYear;
     Date startDate;
     Date endDate;
-    Course* courses = nullptr;
+    Course* courses;
 };
 
 // School Year structure
@@ -69,7 +69,7 @@ struct SchoolYear {
     Semester s3;
     SchoolYear* pNext;
     SchoolYear* pPrev;
-    Class* c = nullptr;
+    Class* c;
 };
 
 // Functions for linked list operations
