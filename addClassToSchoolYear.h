@@ -1,6 +1,4 @@
-#ifndef ADDCLASSTOSCHOOLYEAR_H_INCLUDED
-#define ADDCLASSTOSCHOOLYEAR_H_INCLUDED
+#pragma once
 #include "struct.h"
-void addClassToSchoolYear (SchoolYear* &s, string classname);
 
-#endif // ADDCLASSTOSCHOOLYEAR_H_INCLUDED
+void addClassToSchoolYear (SchoolYear* &s, string classname);
