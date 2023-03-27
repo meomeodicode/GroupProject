@@ -1,7 +1,6 @@
-#pragma once
 #include "addStudentToClass.h"
 
-void addStudentToClass(Class *c, int id, string firstName, string lastName, string gender, string dateOfBirth, int socialID)
+void addStudentToClass(Class* &c, string id, string firstName, string lastName, string gender, Date dob, string socialID)
 {
     // Create a new Student instance
     Student *newStudent = new Student;
@@ -11,14 +10,8 @@ void addStudentToClass(Class *c, int id, string firstName, string lastName, stri
     newStudent->firstName = firstName;
     newStudent->lastName = lastName;
     newStudent->gender = gender;
-    newStudent->socialID = socialID;
-
-    // Parse the dateOfBirth string to a Date instance and assign it to the newStudent's dateOfBirth property
-    Date dob;
-    istringstream iss(dateOfBirth);
-    char dash;
-    iss >> dob.year >> dash >> dob.month >> dash >> dob.day;
     newStudent->dateOfBirth = dob;
+    newStudent->socialID = socialID;
 
     // Add the new student to the beginning of the students list
     if (c->students == nullptr) {
