@@ -13,6 +13,7 @@ void addClass (Class* &c, string name)
     }
     else {
         newClass->pNext = c;
+        newClass->pPrev = nullptr;
         c->pPrev = newClass;
         c = newClass;
     }
