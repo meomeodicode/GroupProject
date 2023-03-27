@@ -1,6 +1,6 @@
 #include "addStudentToCourse.h"
 
-void addStudentToCourse(Course* &course, string id, string firstName, string lastName, string gender, Date dob, string socialID)
+void addStudentToCourse (Course* &course, string id, string firstName, string lastName, string gender, Date dob, string socialID)
 {
     // Create a new Student instance
     Student *newStudent = new Student;
