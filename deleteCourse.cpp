@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void deleteCourse(Course*& head, string courseId)
+void deleteCourse(Course* &head, string courseId)
 {
     if (head == nullptr)
         return;
