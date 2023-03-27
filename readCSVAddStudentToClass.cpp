@@ -17,7 +17,7 @@ void readCSVAddStudentToClass (Class* &c)
             string socialID;
 
             // Read data from CSV file
-            stringstream ss(info);
+            stringstream ss (info);
             int cnt = 1;
             while (getline (ss, tmp, ',')) {
                 if (cnt == 1) {
@@ -44,7 +44,7 @@ void readCSVAddStudentToClass (Class* &c)
                 }
                 else if (cnt == 6) {
                     socialID = tmp;
-                    addStudentToClass(c, id, firstName, lastName, gender, dob, socialID);
+                    addStudentToClass (c, id, firstName, lastName, gender, dob, socialID);
                 }
             }
         }
