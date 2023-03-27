@@ -1,8 +1,5 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <sstream>
 #include "struct.h"
+
 using namespace std;
 
 void importData()
