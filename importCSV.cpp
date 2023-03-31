@@ -1,4 +1,5 @@
 #include "struct.h"
+#include "importCSV.h"
 using namespace std;
 
 void importData()
