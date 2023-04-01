@@ -3,20 +3,20 @@
 
 using namespace std;
 
-void deleteCourse(Course* &head, string courseId)
+void deleteCourse(Course* &courseHead, string courseId)
 {
-    if (head == nullptr)
+    if (courseHead == nullptr)
         return;
     else
     {
-        Course* cur = head;
+        Course* cur = courseHead;
         while (cur)
         {
             if (cur->id == courseId)
             {
-                if (cur == head)
+                if (cur == courseHead)
                 {
-                    head = cur->pNext;
+                    courseHead = cur->pNext;
                 }
                 else
                 {

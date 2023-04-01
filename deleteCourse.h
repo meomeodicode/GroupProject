@@ -1,4 +1,4 @@
 #pragma once
 #include "struct.h"
 
-void deleteCourse(Course* &head, string courseId);
+void deleteCourse(Course* &courseHead, string courseId);

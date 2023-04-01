@@ -1,5 +1,6 @@
 #include "addClass.h"
-void addClassToSchoolYear (SchoolYear* &s, string classname)
+
+void addClassToSchoolYear (SchoolYear* &schoolYearHead, string className)
 {
-    addClass(s->c,classname);
+    addClass (schoolYearHead->classHead, className);
 }

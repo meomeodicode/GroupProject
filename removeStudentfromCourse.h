@@ -1,7 +1,4 @@
-#ifndef REMOVESTUDENTFROMCOURSE_H_INCLUDED
-#define REMOVESTUDENTFROMCOURSE_H_INCLUDED
+#pragma once
 #include "struct.h"
 
-void removeStudentFromCourse(Course* &course, int id);
-
-#endif // REMOVESTUDENTFROMCOURSE_H_INCLUDED
+void removeStudentFromCourse (Course* &courseHead, string id);

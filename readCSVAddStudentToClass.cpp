@@ -1,7 +1,7 @@
 #include "readCSVAddStudentToClass.h"
 #include "addStudentToClass.h"
 
-void readCSVAddStudentToClass (Class* &c)
+void readCSVAddStudentToClass (Class* &classHead)
 {
     ifstream fin ("studentInClass.txt");
 
@@ -44,7 +44,7 @@ void readCSVAddStudentToClass (Class* &c)
                 }
                 else if (cnt == 6) {
                     socialID = tmp;
-                    addStudentToClass (c, id, firstName, lastName, gender, dob, socialID);
+                    addStudentToClass (classHead, id, firstName, lastName, gender, dob, socialID);
                 }
             }
         }

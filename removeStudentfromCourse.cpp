@@ -1,7 +1,8 @@
 #include "removeStudentfromCourse.h"
-void removeStudentFromCourse(Course* &course, int id)
+
+void removeStudentFromCourse (Course* &courseHead, string id)
 {
-    Student* cur=course->students;
+    Student* cur = courseHead->studentHead;
 
     while(cur)
     {
@@ -10,18 +11,17 @@ void removeStudentFromCourse(Course* &course, int id)
             break;
         }
         cur=cur->pNext;
-
     }
     if (!cur) return;
-    if (cur==course->students)
+
+    if (cur == courseHead->studentHead)
     {
-        course->students=cur->pNext;
+        courseHead->studentHead = cur->pNext;
     }
     else
     {
-        cur->pPrev->pNext=cur->pNext;
+        cur->pPrev->pNext = cur->pNext;
 
     }
     delete cur;
-
 }

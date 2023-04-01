@@ -24,8 +24,8 @@ struct Course {
     double totalMark;
     double otherMark;
     double courseGPA;
-    struct Class* c;
-    struct Student* students;
+    struct Class* classHead;
+    struct Student* studentHead;
     Course* pNext;
     Course* pPrev;
 };
@@ -36,11 +36,12 @@ struct Student {
     string firstName;
     string lastName;
     string gender;
+    string className;
     Date dateOfBirth;
     string socialID;
     double overallGPA;
-    Course* courseTotal;
-    Course* courseEnrol;
+    Course* courseTotalHead;
+    Course* courseEnrolHead;
     Student* pNext;
     Student* pPrev;
 };
@@ -48,32 +49,32 @@ struct Student {
 // Class structure
 struct Class {
     string className;
-    Student* students;
+    Student* studentHead;
     Class* pNext;
     Class* pPrev;
 };
 
 // Semester structure
 struct Semester {
-    string schoolYear;
+    string schoolYearName;
     Date startDate;
     Date endDate;
-    Course* courses;
+    Course* courseHead;
 };
 
 // School Year structure
 struct SchoolYear {
-    string schoolYear;
+    string schoolYearName;
     Semester s1;
     Semester s2;
     Semester s3;
     SchoolYear* pNext;
     SchoolYear* pPrev;
-    Class* c;
+    Class* classHead;
 };
 
 // Functions for linked list operations
-void createSchoolYear ();
+void addSchoolYear ();
 void addClassToSchoolYear ();
 void addClass ();
 void addStudentToClass ();

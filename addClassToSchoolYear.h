@@ -1,4 +1,4 @@
 #pragma once
 #include "struct.h"
 
-void addClassToSchoolYear (SchoolYear* &s, string classname);
+void addClassToSchoolYear (SchoolYear* &schoolYearHead, string className);

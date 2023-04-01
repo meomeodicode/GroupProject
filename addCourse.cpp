@@ -1,7 +1,6 @@
-#pragma once
 #include "addCourse.h"
 
-void addCourse(Course* &c, string id, string courseName, string teacherName, string dayOfWeek, string Session)
+void addCourse (Course* &courseHead, string id, string courseName, string teacherName, string dayOfWeek, string Session)
 {
     Course* newCourse = new Course;
     newCourse->id = id;
@@ -11,16 +10,16 @@ void addCourse(Course* &c, string id, string courseName, string teacherName, str
     newCourse->session = Session;
     newCourse->pNext=nullptr;
     newCourse->pPrev=nullptr;
-    newCourse->c = nullptr;
-    newCourse->students = nullptr;
+    newCourse->classHead = nullptr;
+    newCourse->studentHead = nullptr;
 
-    if (c == nullptr) {
-        c = newCourse;
+    if (courseHead == nullptr) {
+        courseHead = newCourse;
     }
     else {
-        newCourse->pNext = c;
+        newCourse->pNext = courseHead;
         newCourse->pPrev = nullptr;
-        c->pPrev = newCourse;
-        c = newCourse;
+        courseHead->pPrev = newCourse;
+        courseHead = newCourse;
     }
 }

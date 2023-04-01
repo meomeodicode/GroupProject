@@ -1,20 +1,20 @@
 #include "addClass.h"
 
-void addClass (Class* &c, string name)
+void addClass (Class* &classHead, string className)
 {
     Class* newClass = new Class;
-    newClass->className = name;
-    newClass->students = nullptr;
+    newClass->className = className;
+    newClass->studentHead = nullptr;
     newClass->pNext = nullptr;
     newClass->pPrev = nullptr;
 
-    if (c == nullptr) {
-        c = newClass;
+    if (classHead == nullptr) {
+        classHead = newClass;
     }
     else {
-        newClass->pNext = c;
+        newClass->pNext = classHead;
         newClass->pPrev = nullptr;
-        c->pPrev = newClass;
-        c = newClass;
+        classHead->pPrev = newClass;
+        classHead = newClass;
     }
 }
