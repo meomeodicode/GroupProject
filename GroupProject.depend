@@ -1,0 +1,92 @@
+# depslib dependency file v1.0
+1680256247 source:c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\add_class-remove_course.cpp
+	<iostream>
+
+1680256248 source:c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\add_student_add_class.cpp
+	<iostream>
+	<cstring>
+
+1680277846 source:c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\addclass.cpp
+	"addClass.h"
+
+1680277236 c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\addclass.h
+	"struct.h"
+
+1680279451 c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\struct.h
+	<bits/stdc++.h>
+
+1680276727 source:c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\addclasstoschoolyear.cpp
+	"addClass.h"
+
+1680277911 source:c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\addcourse.cpp
+	"addCourse.h"
+
+1680277911 c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\addcourse.h
+	"struct.h"
+
+1680277187 source:c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\addcoursetosemester.cpp
+	"addCourseToSemester.h"
+	"addCourse.h"
+
+1680256247 c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\addcoursetosemester.h
+	"struct.h"
+
+1680277549 source:c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\addstudenttoclass.cpp
+	"addStudentToClass.h"
+
+1680277970 c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\addstudenttoclass.h
+	"struct.h"
+
+1680278024 source:c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\addstudenttocourse.cpp
+	"addStudentToCourse.h"
+
+1680278024 c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\addstudenttocourse.h
+	"struct.h"
+
+1680278072 source:c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\deletecourse.cpp
+	<iostream>
+	"deleteCourse.h"
+
+1680278072 c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\deletecourse.h
+	"struct.h"
+
+1680256447 source:c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\main.cpp
+	<bits/stdc++.h>
+	"struct.h"
+
+1680278119 source:c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\readcsvaddstudenttoclass.cpp
+	"readCSVAddStudentToClass.h"
+	"addStudentToClass.h"
+
+1680278119 c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\readcsvaddstudenttoclass.h
+	"struct.h"
+
+1680277667 source:c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\removestudentfromclass.cpp
+	"removeStudentFromClass.h"
+
+1680278143 c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\removestudentfromclass.h
+	"struct.h"
+
+1680277809 source:c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\updateresult.cpp
+	<iostream>
+	"updateResult.h"
+	<fstream>
+	<string>
+
+1680278217 c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\updateresult.h
+	"struct.h"
+
+1680273769 source:c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\importcsv.cpp
+
+1680278187 source:c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\removestudentfromcourse.cpp
+	"removeStudentfromCourse.h"
+
+1680278187 c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\removestudentfromcourse.h
+	"struct.h"
+
+1680277943 source:c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\addschoolyear.cpp
+	"addSchoolYear.h"
+
+1680273879 c:\users\asus\onedrive - vnu-hcmus\desktop\groupproject\addschoolyear.h
+	"struct.h"
+
