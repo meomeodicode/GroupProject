@@ -1,7 +1,14 @@
 #pragma once
-#include <bits/stdc++.h>
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <string.h>
+#include <cmath>
+#include <iomanip>
+#include <fstream>
+#include <chrono>
 
 using namespace std;
+using namespace sf;
 
 // Date structure
 struct Date {

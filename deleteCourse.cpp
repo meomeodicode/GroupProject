@@ -1,8 +1,6 @@
 #include <iostream>
 #include "deleteCourse.h"
 
-using namespace std;
-
 void deleteCourse(Course* &courseHead, string courseId)
 {
     if (courseHead == nullptr)

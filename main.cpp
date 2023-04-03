@@ -1,10 +1,10 @@
-#include <bits/stdc++.h>
+#include <SFML/Graphics.hpp>
 #include "struct.h"
+#include "MainScreen.h"
 
-using namespace std;
+using namespace sf;
 
 int main()
 {
-    cout << "Hello world!" << endl;
-    return 0;
+    MainScreen ();
 }
