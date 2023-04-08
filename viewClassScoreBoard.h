@@ -1,0 +1,4 @@
+#ifndef VIEWCLASSSCOREBOARD_H_INCLUDED
+#define VIEWCLASSSCOREBOARD_H_INCLUDED
+#include "struct.h"
+#endif
