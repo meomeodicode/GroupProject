@@ -12,7 +12,9 @@ void viewClass(Class* classhead)
 			cout << cur->className << endl;
 			cur = cur->pNext;
 		}
+		cout << cur->className;
 	}
 	else
 		cout << "Error!";
+	delete cur;
 }
