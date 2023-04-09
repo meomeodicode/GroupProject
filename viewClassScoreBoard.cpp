@@ -24,16 +24,19 @@ void showClassScoreboard(Class* classHead, string name, Semester curr)
                 cout << "Date of Birth: " << studentInfo->dateOfBirth.day << "/" << studentInfo->dateOfBirth.month << "/" << studentInfo->dateOfBirth.year << "\n";
                 cout << "Social ID: " << studentInfo->socialID << "\n";
                 cout << "Overall GPA: " << studentInfo->overallGPA << "\n";
-                cout << "Semester GPA:" << studentInfo->semGPA << "\n";
                 Course* enrolled = studentInfo->courseEnrolHead;
+                double semGPA = 0;
                 while (enrolled)
                 {
                     //studentInfo->courseEnrolHead->courseName
                     if (enrolled->courseName == tracking.courseHead->courseName)
-                        cout << enrolled->finalMark << "\n";
+                    {
+                        semGPA += enrolled->finalMark;
+                        cout << "Final Mark of" << enrolled->courseName << ":" << enrolled->finalMark << "\n";
+                    }
                     enrolled = enrolled->pNext;
-
                 }
+                cout << "Semester GPA:" << semGPA * 4 << endl;
                 studentInfo = studentInfo->pNext;
             }
             return;
