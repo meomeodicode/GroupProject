@@ -8,14 +8,14 @@ ViewStudentScoreboard(Student S)
     cout << S.firstName << endl;
     cout << S.lastName << endl;
     cout << S.gender << endl;
-    cout << “Overall GPA : “ << S.overallGPA << endl;
+    cout << â€œOverall GPA : â€œ << S.overallGPA << endl;
     cout << cur->firstName << endl;
     Course* curcourse = S.courseTotalHead;
     while (curcourse)
     {
         coursenumber += 1;
         totalpoint += curcourse->courseGPA;
-        cout << curcourse->courseName << “ “ << curcourse->credits << “ “ << curcourse->midtermMark << “ “ << curcourse->otherMark << “ “ << curcourse->finalMark << “ “ << curcourse->totalMark << “ “ << curcourse->courseGPA << endl;
+        cout << curcourse->courseName << â€œ â€œ << curcourse->credits << â€œ â€œ << curcourse->midtermMark << â€œ â€œ << curcourse->otherMark << â€œ â€œ << curcourse->finalMark << â€œ â€œ << curcourse->totalMark << â€œ â€œ << curcourse->courseGPA << endl;
         curcouse = curcourse->pNext;
     }
 }
