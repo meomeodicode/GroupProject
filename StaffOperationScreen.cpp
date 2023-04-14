@@ -203,6 +203,24 @@ void StaffOperationScreen()
         app.clear (Color (96, 169, 255));
         app.draw (buttonBack);
         app.draw (buttonTextBack);
+
+        app.draw (buttonClassList);
+        app.draw (buttonTextClassList);
+
+        app.draw (buttonStudentinClass);
+        app.draw (buttonTextStudentinClass);
+
+        app.draw (buttonStudentListinCourse);
+        app.draw (buttonTextStudentListinCourse);
+
+        app.draw (buttonCourseList);
+        app.draw (buttonTextCourseList);
+
+        app.draw (buttonCourseScore);
+        app.draw (buttonTextCourseScore);
+
+        app.draw (buttonClassScore);
+        app.draw (buttonTextClassScore);
         app.display ();
     }
 }
