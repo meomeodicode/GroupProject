@@ -1,7 +1,7 @@
 #include "CourseListScreen.h"
 #include "StaffOperationScreen.h"
 
-void CourseListScreen(Course c)
+void CourseListScreen()
 {
     RenderWindow app (VideoMode (1920, 1080), "List of Courses", Style::Default);
     Font font;
@@ -19,6 +19,9 @@ void CourseListScreen(Course c)
     buttonTextBack.setPosition (935, 805);
     buttonTextBack.setFillColor (Color (52, 142, 254));
 
+    Text TextEmpty ("Empty",font,30);
+    TextEmpty.setPosition (20,20);
+
     while (app.isOpen ()){
         Event e;
         while (app.pollEvent (e)){
@@ -32,7 +35,7 @@ void CourseListScreen(Course c)
                 if (buttonBack.getGlobalBounds ().contains (mousePos))
                 {
                     buttonBack.setFillColor (Color (202, 216, 229));
-                    StaffOperationScreen();
+                    StaffOperationScreen (app);
                 }
             }
             else if (e.type == Event::MouseMoved)
@@ -50,9 +53,30 @@ void CourseListScreen(Course c)
         }
 
         app.clear (Color (96, 169, 255));
+        ifstream fin("courselist.txt");
+        string line;
+
+
+
+          Text courselist("",font,16);
+           courselist.setPosition(20,20);
+            courselist.setFillColor (Color (136, 136, 136));
+           string allcoursename;
+           while(getline(fin,line))
+        {
+              allcoursename+=(line+"\n");
+
+
+
+
+        }
+        courselist.setString(allcoursename);
+        courselist.move(0,120);
+        app.draw(courselist);
+
+
         app.draw (buttonBack);
         app.draw (buttonTextBack);
         app.display ();
     }
 }
-

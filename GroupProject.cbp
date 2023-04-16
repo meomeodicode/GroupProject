@@ -46,9 +46,12 @@
 			<Add option="-fexceptions" />
 			<Add option="-DSFML_STATIC" />
 			<Add directory="C:/Users/Admin/Desktop/GroupProject/Src/SFML-2.5.1/include" />
+			<Add directory="SFML-2.5.1/include" />
 		</Compiler>
 		<Linker>
 			<Add directory="C:/Users/Admin/Desktop/GroupProject/Src/SFML-2.5.1/lib" />
+			<Add directory="SFML-2.5.1" />
+			<Add directory="SFML-2.5.1/lib" />
 		</Linker>
 		<Unit filename="MainScreen.cpp" />
 		<Unit filename="MainScreen.h" />

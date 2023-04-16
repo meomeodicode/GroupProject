@@ -7,4 +7,7 @@
 using namespace sf;
 using namespace std;
 
-void StudentListinCourseScreen (Course c);
+void StudentListinCourseScreen (string coursename);
+
+
+

@@ -1,7 +1,7 @@
 #include "StudentListInCourseScreen.h"
 #include "StaffOperationScreen.h"
 
-void StudentListinCourseScreen(Course c)
+void StudentListinCourseScreen(string coursename)
 {
     RenderWindow app (VideoMode (1920, 1080), "Course's Students", Style::Default);
     Font font;
@@ -32,7 +32,7 @@ void StudentListinCourseScreen(Course c)
                 if (buttonBack.getGlobalBounds ().contains (mousePos))
                 {
                     buttonBack.setFillColor (Color (202, 216, 229));
-                    StaffOperationScreen();
+                    StaffOperationScreen(app);
                 }
             }
             else if (e.type == Event::MouseMoved)
@@ -48,8 +48,37 @@ void StudentListinCourseScreen(Course c)
                 }
             }
         }
+        Text StudentListCourse("",font,16);
+        StudentListCourse.setPosition(20,20);
+        StudentListCourse.setFillColor (Color (136, 136, 136));
+        ifstream fin("StudentInCourse.txt");
+        string line;
+        string AllStudentInfo;
+
+        while (getline(fin,line))
+        {
+            stringstream ss(line);
+            string info;
+            int cur=1;
+            while (getline(ss,info,','))
+            {
+                if(cur==1)
+                {
+                    if (info!=coursename)
+                        break;
+                    cur++;
+                }
+                else
+                {
+                    AllStudentInfo+=(info+"\n");
+                }
+            }
+        }
+        StudentListCourse.setString(AllStudentInfo);
+
 
         app.clear (Color (96, 169, 255));
+        app.draw(StudentListCourse);
         app.draw (buttonBack);
         app.draw (buttonTextBack);
         app.display ();
