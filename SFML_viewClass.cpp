@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "struct.h"
+#include "viewClass.h"
 using namespace std;
 using namespace sf;
 
