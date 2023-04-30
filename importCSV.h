@@ -1,6 +1,4 @@
-#ifndef IMPORTCSV_H_INCLUDED
-#define IMPORTCSV_H_INCLUDED
+#pragma once
 #include "struct.h"
 
 void importData();
-#endif

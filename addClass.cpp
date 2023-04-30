@@ -1,3 +1,4 @@
+#pragma once
 #include "addClass.h"
 
 void addClass (Class* &classHead, string className)

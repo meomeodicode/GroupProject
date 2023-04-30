@@ -3,8 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "struct.h"
+#include <regex>
 
 using namespace sf;
 using namespace std;
 
-void StudentCourseListScreen (RenderWindow& app, string idInput, string passwordInput);
+void RemoveStudentScreen (RenderWindow &app, string classInput, string idInput, string passwordInput);

@@ -7,4 +7,4 @@
 using namespace sf;
 using namespace std;
 
-void ClassListScreen(Class c);
+void ClassListScreen(RenderWindow &app, string idInput, string passwordInput);

@@ -1,9 +1,9 @@
 #include "CourseScoreScreen.h"
-#include "StaffOperationScreen.h"
+#include "StaffSearchCourseScore.h"
 
-void CourseScoreScreen(Course c)
+void CourseScoreScreen(RenderWindow &app, string coursename, string idInput, string passwordInput)
 {
-    RenderWindow app (VideoMode (1920, 1080), "Course's Students", Style::Default);
+    // Font
     Font font;
     font.loadFromFile("Src/Font/arial_narrow_7.ttf");
 
@@ -27,13 +27,18 @@ void CourseScoreScreen(Course c)
             {
                 app.close ();
             }
+            else if (e.type == sf::Event::KeyPressed && e.key.code == sf::Keyboard::Escape)
+            {
+                buttonTextBack.setFillColor (Color(202, 216, 229));
+                StaffSearchCourseScoreScreen (app, idInput, passwordInput);
+            }
             else if (e.type == Event::MouseButtonPressed)
             {
                 Vector2f mousePos = app.mapPixelToCoords (Mouse::getPosition(app));
                 if (buttonBack.getGlobalBounds ().contains (mousePos))
                 {
                     buttonBack.setFillColor (Color (202, 216, 229));
-                    StaffOperationScreen();
+                    StaffSearchCourseScoreScreen (app, idInput, passwordInput);
                 }
             }
             else if (e.type == Event::MouseMoved)
@@ -51,9 +56,10 @@ void CourseScoreScreen(Course c)
         }
 
         app.clear (Color (96, 169, 255));
+
         app.draw (buttonBack);
         app.draw (buttonTextBack);
+
         app.display ();
     }
 }
-

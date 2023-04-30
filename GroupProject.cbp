@@ -46,19 +46,44 @@
 			<Add option="-fexceptions" />
 			<Add option="-DSFML_STATIC" />
 			<Add directory="C:/Users/Admin/Desktop/GroupProject/Src/SFML-2.5.1/include" />
-			<Add directory="SFML-2.5.1/include" />
 		</Compiler>
 		<Linker>
 			<Add directory="C:/Users/Admin/Desktop/GroupProject/Src/SFML-2.5.1/lib" />
-			<Add directory="SFML-2.5.1" />
-			<Add directory="SFML-2.5.1/lib" />
 		</Linker>
+		<Unit filename="AddStudentScreen.cpp" />
+		<Unit filename="AddStudentScreen.h" />
+		<Unit filename="ChangeStaffPasswordScreen.cpp" />
+		<Unit filename="ChangeStaffPasswordScreen.h" />
+		<Unit filename="ClassListScreen.cpp" />
+		<Unit filename="ClassListScreen.h" />
+		<Unit filename="CourseListScreen.cpp" />
+		<Unit filename="CourseListScreen.h" />
+		<Unit filename="CourseScoreScreen.cpp" />
+		<Unit filename="CourseScoreScreen.h" />
 		<Unit filename="MainScreen.cpp" />
 		<Unit filename="MainScreen.h" />
+		<Unit filename="RemoveStudentScreen.cpp" />
+		<Unit filename="RemoveStudentScreen.h" />
+		<Unit filename="StaffOperationScreen.cpp" />
+		<Unit filename="StaffOperationScreen.h" />
 		<Unit filename="StaffScreen.cpp" />
 		<Unit filename="StaffScreen.h" />
+		<Unit filename="StaffSearchClass.cpp" />
+		<Unit filename="StaffSearchClass.h" />
+		<Unit filename="StaffSearchClassScore.cpp" />
+		<Unit filename="StaffSearchClassScore.h" />
+		<Unit filename="StaffSearchCourse.cpp" />
+		<Unit filename="StaffSearchCourse.h" />
+		<Unit filename="StaffSearchCourseScore.cpp" />
+		<Unit filename="StaffSearchCourseScore.h" />
+		<Unit filename="StudentCourseListScreen.cpp" />
+		<Unit filename="StudentCourseListScreen.h" />
 		<Unit filename="StudentListInClassScreen.cpp" />
 		<Unit filename="StudentListInClassScreen.h" />
+		<Unit filename="StudentListInCourseScreen.cpp" />
+		<Unit filename="StudentListInCourseScreen.h" />
+		<Unit filename="StudentOperationScreen.cpp" />
+		<Unit filename="StudentOperationScreen.h" />
 		<Unit filename="StudentScoreBoardScreen.cpp" />
 		<Unit filename="StudentScoreBoardScreen.h" />
 		<Unit filename="StudentScreen.cpp" />
@@ -89,7 +114,6 @@
 		<Unit filename="removeStudentfromCourse.cpp" />
 		<Unit filename="removeStudentfromCourse.h" />
 		<Unit filename="struct.h" />
-		<Unit filename="studentInClass.txt" />
 		<Unit filename="updateResult.cpp" />
 		<Unit filename="updateResult.h" />
 		<Extensions>

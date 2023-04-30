@@ -1,4 +1,4 @@
 #pragma once
 #include "struct.h"
 
-void readCSVAddStudentToClass (Class* &classHead);
+void readCSVAddStudentToClass (Class* &classHead, string &classInput);

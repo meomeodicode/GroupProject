@@ -26,11 +26,11 @@ struct Course {
     int maxStudents;
     string dayOfWeek;
     string session;
-    double midtermMark;
-    double finalMark;
-    double totalMark;
-    double otherMark;
-    double courseGPA;
+    string midtermMark;
+    string finalMark;
+    string totalMark;
+    string otherMark;
+    string courseGPA;
     struct Class* classHead;
     struct Student* studentHead;
     Course* pNext;
@@ -98,11 +98,11 @@ void importScoreboard ();
 void updateStudentResult ();
 
 // Function for representing
-void viewClassList (Class *c); // 15
-void viewStudentListInClass (Class *c); // 16
-void viewCourseList (Course *course); // 9, 17
-void viewStudentListInCourse (Course *course); // 18
+void viewClassList (Class *c); // 15 x
+void viewStudentListInClass (Class *c); // 16 x
+void viewCourseList (Course *course); // 9, 17 x
+void viewStudentListInCourse (Course *course); // 18 x
 void viewScoreboardInCourse (Course *course); // 21
-void viewScoreboardInClass (Class *c); // 23
-void viewStudentCourse (Student *student); // 14
-void viewStudentScore (Student *student); // 24
+void viewScoreboardInClass (Class *c); // 23 x
+void viewStudentCourse (Student *student); // 14 x
+void viewStudentScore (Student *student); // 24 x

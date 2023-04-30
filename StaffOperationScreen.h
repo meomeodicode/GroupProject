@@ -7,4 +7,4 @@
 using namespace sf;
 using namespace std;
 
-void StaffOperationScreen();
+void StaffOperationScreen (RenderWindow &app, string idInput, string passwordInput);

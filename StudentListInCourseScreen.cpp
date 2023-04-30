@@ -1,9 +1,9 @@
 #include "StudentListInCourseScreen.h"
-#include "StaffOperationScreen.h"
+#include "StaffSearchCourse.h"
 
-void StudentListinCourseScreen(string coursename)
+void StudentListinCourseScreen(RenderWindow& app, string coursename, string idInput, string passwordInput)
 {
-    RenderWindow app (VideoMode (1920, 1080), "Course's Students", Style::Default);
+    // Font
     Font font;
     font.loadFromFile("Src/Font/arial_narrow_7.ttf");
 
@@ -26,13 +26,18 @@ void StudentListinCourseScreen(string coursename)
             {
                 app.close ();
             }
+            else if (e.type == sf::Event::KeyPressed && e.key.code == sf::Keyboard::Escape)
+            {
+                buttonBack.setFillColor (Color(202, 216, 229));
+                StaffSearchCourseScreen (app, idInput, passwordInput);
+            }
             else if (e.type == Event::MouseButtonPressed)
             {
                 Vector2f mousePos = app.mapPixelToCoords (Mouse::getPosition(app));
                 if (buttonBack.getGlobalBounds ().contains (mousePos))
                 {
                     buttonBack.setFillColor (Color (202, 216, 229));
-                    StaffOperationScreen(app);
+                    StaffSearchCourseScreen(app, idInput, passwordInput);
                 }
             }
             else if (e.type == Event::MouseMoved)
@@ -51,7 +56,7 @@ void StudentListinCourseScreen(string coursename)
         Text StudentListCourse("",font,16);
         StudentListCourse.setPosition(20,20);
         StudentListCourse.setFillColor (Color (136, 136, 136));
-        ifstream fin("StudentInCourse.txt");
+        ifstream fin("StudentInCourse.csv");
         string line;
         string AllStudentInfo;
 

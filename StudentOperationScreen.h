@@ -7,4 +7,4 @@
 using namespace sf;
 using namespace std;
 
-void StudentOperationScreen(Student c);
+void StudentOperationScreen (RenderWindow &app, string idInput, string passwordInput);

@@ -1,70 +1,145 @@
+#include "MainScreen.h"
 #include "StudentScreen.h"
+#include "StudentOperationScreen.h"
 #include "StudentScoreBoardScreen.h"
 
-void StudentScreen ()
+bool checkValidStudentLogin (string IDStudent, string passwordStudent)
 {
-    RenderWindow app (VideoMode (1920, 1080), "Student Screen", Style::Default);
+    ifstream fin ("Src/FileCSV/AccountStudent.csv");
+
+    if (fin.is_open()) {
+        string info, tmp;
+        while (getline (fin, info)) {
+            string id;
+            string password;
+
+            stringstream ss (info);
+            int cnt = 1;
+            while (getline (ss, tmp, ',')) {
+                if (cnt == 1) {
+                    id = tmp;
+                    ++cnt;
+                }
+                else if (cnt == 2) {
+                    password = tmp;
+                    if (id == IDStudent && password == passwordStudent) {
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+
+    return false;
+}
+
+void StudentScreen (RenderWindow &app)
+{
+    string inputTmp = "", passwordText = "", revealPasswordText = "";
+    int check = 0, checkreveal = 0;
+
+    // Font
     Font font;
     font.loadFromFile("Src/Font/arial_narrow_7.ttf");
 
-    string inputTmp;
-    int check = 0;
+    // Image
+    Texture SchoolMoodle;
+    SchoolMoodle.loadFromFile("Src/Image/SchoolMoodle.png");
+    Sprite Background(SchoolMoodle);
+    Background.setPosition(0, 0);
+
+    Texture noRevealPassword;
+    Texture revealPassword;
+    noRevealPassword.loadFromFile("Src/Image/noRevealPassword.jpg");
+    revealPassword.loadFromFile("Src/Image/revealPassword.jpg");
+    Sprite revealSwitch(noRevealPassword);
+    revealSwitch.setPosition(870, 550);
 
     // Text Shape
-    RectangleShape requireToEnter (Vector2f (600, 50));
+    RectangleShape timeBox (Vector2f (220, 50));
+    timeBox.setFillColor (Color::White);
+    timeBox.setPosition (1500, 220);
+    timeBox.setOutlineThickness (2);
+    timeBox.setOutlineColor (Color (204, 204, 204));
+
+    RectangleShape requireToEnter (Vector2f (600, 75));
     requireToEnter.setFillColor (Color::White);
     requireToEnter.setPosition (400, 300);
     requireToEnter.setOutlineThickness (2);
-    requireToEnter.setOutlineColor (Color (157, 209, 255));
+    requireToEnter.setOutlineColor (Color (204, 204, 204));
 
-    RectangleShape inputBoxName (Vector2f (500, 30));
-    inputBoxName.setFillColor (Color::White);
-    inputBoxName.setPosition (400, 600);
-    inputBoxName.setOutlineThickness (2);
-    inputBoxName.setOutlineColor (Color (157, 209, 255));
+    RectangleShape inputBoxStudentID (Vector2f (500, 30));
+    inputBoxStudentID.setFillColor (Color::White);
+    inputBoxStudentID.setPosition (400, 450);
+    inputBoxStudentID.setOutlineThickness (2);
+    inputBoxStudentID.setOutlineColor (Color (157, 209, 255));
 
-    RectangleShape inputBoxClass (Vector2f (500, 30));
-    inputBoxClass.setFillColor (Color::White);
-    inputBoxClass.setPosition (400, 700);
-    inputBoxClass.setOutlineThickness (2);
-    inputBoxClass.setOutlineColor (Color (157, 209, 255));
+    RectangleShape inputBoxPassword (Vector2f (470, 30));
+    inputBoxPassword.setFillColor (Color::White);
+    inputBoxPassword.setPosition (400, 550);
+    inputBoxPassword.setOutlineThickness (2);
+    inputBoxPassword.setOutlineColor (Color (157, 209, 255));
 
     RectangleShape submitViewScoreBoard (Vector2f (200, 30));
     submitViewScoreBoard.setFillColor (Color::White);
-    submitViewScoreBoard.setPosition (400, 800);
+    submitViewScoreBoard.setPosition (400, 650);
     submitViewScoreBoard.setOutlineThickness (2);
     submitViewScoreBoard.setOutlineColor (Color (157, 209, 255));
 
     RectangleShape exitStudentScreen (Vector2f (200, 30));
     exitStudentScreen.setFillColor (Color::White);
-    exitStudentScreen.setPosition (400, 900);
+    exitStudentScreen.setPosition (400, 1000);
     exitStudentScreen.setOutlineThickness (2);
     exitStudentScreen.setOutlineColor (Color (157, 209, 255));
 
+    RectangleShape revealButton(Vector2f(30, 30));
+    revealButton.setPosition(870, 550);
+    revealButton.setFillColor(Color::White);
+    revealButton.setOutlineThickness(2);
+    revealButton.setOutlineColor(Color (157, 209, 255));
+
+
     // Text
-    Text requireToEnterText ("Please enter your information!", font, 25);
-    requireToEnterText.setPosition (410, 310);
+    Text timeText ("", font, 25);
+    timeText.setPosition (1510, 225);
+    timeText.setFillColor (Color (136, 136, 136));
+
+    Text requireToEnterText ("Please login!", font, 50);
+    requireToEnterText.setPosition (410, 305);
     requireToEnterText.setFillColor (Color (136, 136, 136));
 
-    Text inputTextName ("Please enter your name", font, 25);
-    inputTextName.setPosition (410, 600);
-    inputTextName.setFillColor (Color (52, 142, 254));
+    Text inputTextStudentID ("Please enter your student ID", font, 25);
+    inputTextStudentID.setPosition (410, 450);
+    inputTextStudentID.setFillColor (Color (52, 142, 254));
 
-    Text inputTextClass ("Please enter your class", font, 25);
-    inputTextClass.setPosition (410, 700);
-    inputTextClass.setFillColor (Color (52, 142, 254));
+    Text inputTextPassword ("Please enter your password", font, 25);
+    inputTextPassword.setPosition (410, 550);
+    inputTextPassword.setFillColor (Color (52, 142, 254));
 
     Text submitViewScoreBoardText ("Submit!", font, 25);
-    submitViewScoreBoardText.setPosition (410, 800);
+    submitViewScoreBoardText.setPosition (410, 650);
     submitViewScoreBoardText.setFillColor (Color (52, 142, 254));
 
-    Text exitStudentScreenText ("Exit!", font, 25);
-    exitStudentScreenText.setPosition (410, 900);
+    Text exitStudentScreenText ("Return", font, 25);
+    exitStudentScreenText.setPosition (410, 1000);
     exitStudentScreenText.setFillColor (Color (52, 142, 254));
+
+    Text invalidWarning ("", font, 15);
+    invalidWarning.setPosition (410, 685);
+    invalidWarning.setFillColor (Color (198, 40, 40));
 
     // Screen
     while (app.isOpen ()){
         Event e;
+
+        chrono::system_clock::time_point now = chrono::system_clock::now();
+        time_t currentTime = chrono::system_clock::to_time_t(now);
+        tm* localTime = localtime(&currentTime);
+        stringstream tmpTimeString;
+        tmpTimeString << put_time(localTime, "%d/%m/%Y %I:%M%p");
+        string timeString = tmpTimeString.str();
+        timeText.setString(timeString);
+
         while (app.pollEvent (e)){
             if (e.type == Event::Closed)
             {
@@ -75,36 +150,67 @@ void StudentScreen ()
                 check = 0;
                 exitStudentScreen.setFillColor (Color(202, 216, 229));
                 app.close ();
+                MainScreen ();
             }
             else if (e.type == sf::Event::KeyPressed && e.key.code == sf::Keyboard::Enter)
             {
                 submitViewScoreBoard.setFillColor (Color(202, 216, 229));
                 check = 0;
-                if (inputTextName.getString() != "Please enter your name" && inputTextClass.getString() != "Please enter your class") {
-                    StudentScoreBoardScreen(inputTextName.getString(), inputTextClass.getString());
+                if (checkValidStudentLogin (inputTextStudentID.getString(), revealPasswordText)) {
+                    StudentOperationScreen (app, inputTextStudentID.getString(), revealPasswordText);
+                }
+                else {
+                    invalidWarning.setString("Wrong id or password!");
                 }
             }
             else if (e.type == Event::MouseButtonPressed)
             {
                 Vector2f mousePos = app.mapPixelToCoords (Mouse::getPosition(app));
-                if (inputBoxName.getGlobalBounds().contains (mousePos) && check != 1)
+                if (inputBoxStudentID.getGlobalBounds().contains (mousePos))
                 {
-                    inputBoxName.setFillColor (Color (202, 216, 229));
-                    check = 1;
-                    inputTmp = "";
+                    if (check != 1) {
+                        inputBoxStudentID.setFillColor (Color (202, 216, 229));
+                        check = 1;
+                        inputTmp = "";
+                    }
+                    else {
+                        inputBoxStudentID.setFillColor (Color (202, 216, 229));
+                    }
                 }
-                else if (inputBoxClass.getGlobalBounds().contains (mousePos) && check != 2)
+                else if (inputBoxPassword.getGlobalBounds().contains (mousePos))
                 {
-                    inputBoxClass.setFillColor (Color (202, 216, 229));
-                    check = 2;
-                    inputTmp = "";
+                    if (check != 2) {
+                        inputBoxPassword.setFillColor (Color (202, 216, 229));
+                        check = 2;
+                        revealPasswordText = "";
+                        passwordText = "";
+                    }
+                    else {
+                        inputBoxPassword.setFillColor (Color (202, 216, 229));
+                    }
+                }
+                else if (revealButton.getGlobalBounds().contains (mousePos))
+                {
+                    revealButton.setFillColor (Color (202, 216, 229));
+                    checkreveal = 1 - checkreveal;
+                    if (checkreveal == 0) {
+                        inputTextPassword.setString (passwordText);
+                        revealSwitch.setTexture(noRevealPassword);
+                    }
+                    else {
+                        inputTextPassword.setString (revealPasswordText);
+                        revealSwitch.setTexture(revealPassword);
+                    }
                 }
                 else if (submitViewScoreBoard.getGlobalBounds().contains(mousePos))
                 {
                     check = 0;
                     submitViewScoreBoard.setFillColor (Color(202, 216, 229));
-                    if (inputTextName.getString() != "Please enter your name" && inputTextClass.getString() != "Please enter your class") {
-                        StudentScoreBoardScreen(inputTextName.getString(), inputTextClass.getString());
+                    if (checkValidStudentLogin (inputTextStudentID.getString(), revealPasswordText)) {
+                        StudentOperationScreen (app, inputTextStudentID.getString(), revealPasswordText);
+                    }
+                    else {
+                        invalidWarning.setString("Wrong id or password!");
                     }
                 }
                 else if (exitStudentScreen.getGlobalBounds().contains(mousePos))
@@ -112,31 +218,39 @@ void StudentScreen ()
                     check = 0;
                     exitStudentScreen.setFillColor (Color(202, 216, 229));
                     app.close ();
+                    MainScreen ();
                 }
                 else
                 {
                     check = 0;
-                    inputTmp = "";
                 }
             }
             else if (e.type == Event::MouseMoved)
             {
                 Vector2f mousePos = app.mapPixelToCoords (Mouse::getPosition(app));
-                if (inputBoxName.getGlobalBounds().contains(mousePos))
+                if (inputBoxStudentID.getGlobalBounds().contains(mousePos))
                 {
-                    inputBoxName.setFillColor(Color(225, 241, 255));
+                    inputBoxStudentID.setFillColor(Color(225, 241, 255));
                 }
                 else
                 {
-                    inputBoxName.setFillColor (Color::White);
+                    inputBoxStudentID.setFillColor (Color::White);
                 }
-                if (inputBoxClass.getGlobalBounds().contains(mousePos))
+                if (inputBoxPassword.getGlobalBounds().contains(mousePos))
                 {
-                    inputBoxClass.setFillColor(Color(225, 241, 255));
+                    inputBoxPassword.setFillColor(Color(225, 241, 255));
                 }
                 else
                 {
-                    inputBoxClass.setFillColor (Color::White);
+                    inputBoxPassword.setFillColor (Color::White);
+                }
+                if (revealButton.getGlobalBounds().contains(mousePos))
+                {
+                    revealButton.setFillColor(Color(225, 241, 255));
+                }
+                else
+                {
+                    revealButton.setFillColor (Color::White);
                 }
                 if (submitViewScoreBoard.getGlobalBounds().contains(mousePos))
                 {
@@ -159,37 +273,75 @@ void StudentScreen ()
             {
                 if (e.text.unicode < 128 && e.text.unicode != '\b') {
                     inputTmp += e.text.unicode;
-                    inputTextName.setString (inputTmp);
+                    inputTextStudentID.setString (inputTmp);
                 }
-                else if (e.text.unicode == '\b' && !inputTextName.getString().isEmpty()) {
-                    inputTmp.pop_back ();
-                    inputTextName.setString (inputTmp);
+                else if (e.text.unicode == '\b' && !inputTextStudentID.getString().isEmpty()) {
+                    if (inputTmp.size() > 0) {
+                        inputTmp.pop_back ();
+                        inputTextStudentID.setString (inputTmp);
+                    }
+                    else {
+                        inputTextStudentID.setString ("");
+                    }
                 }
             }
             else if (e.type == Event::TextEntered && check == 2)
             {
                 if (e.text.unicode < 128 && e.text.unicode != '\b') {
-                    inputTmp += e.text.unicode;
-                    inputTextClass.setString (inputTmp);
+                    revealPasswordText += e.text.unicode;
+                    passwordText += '*';
+                    if (checkreveal == 0) {
+                        inputTextPassword.setString (passwordText);
+                    }
+                    else {
+                        inputTextPassword.setString (revealPasswordText);
+                    }
                 }
-                else if (e.text.unicode == '\b' && !inputTextClass.getString().isEmpty()) {
-                    inputTmp.pop_back ();
-                    inputTextClass.setString (inputTmp);
+                else if (e.text.unicode == '\b' && !inputTextPassword.getString().isEmpty()) {
+                    if (revealPasswordText.size() > 0 && passwordText.size() > 0) {
+                        revealPasswordText.pop_back ();
+                        passwordText.pop_back ();
+                        if (checkreveal == 0) {
+                            inputTextPassword.setString (passwordText);
+                        }
+                        else {
+                            inputTextPassword.setString (revealPasswordText);
+                        }
+                    }
+                    else {
+                        inputTextPassword.setString ("");
+                    }
                 }
             }
         }
 
         app.clear (Color (96, 169, 255));
+
+        app.draw (Background);
+
+        app.draw (timeBox);
+        app.draw (timeText);
+
         app.draw (requireToEnter);
         app.draw (requireToEnterText);
-        app.draw (inputBoxName);
-        app.draw (inputTextName);
-        app.draw (inputBoxClass);
-        app.draw (inputTextClass);
+
+        app.draw (inputBoxStudentID);
+        app.draw (inputTextStudentID);
+
+        app.draw (inputBoxPassword);
+        app.draw (inputTextPassword);
+
         app.draw (submitViewScoreBoard);
         app.draw (submitViewScoreBoardText);
+
         app.draw (exitStudentScreen);
         app.draw (exitStudentScreenText);
+
+        app.draw (revealButton);
+        app.draw (revealSwitch);
+
+        app.draw (invalidWarning);
+
         app.display ();
     }
 }
