@@ -12,6 +12,7 @@ void changeStudentPasswordCSV (string idInput, string newPassword)
         while (getline (fin, info)) {
             string id;
             string password;
+            string classs;
 
             stringstream ss (info);
             int cnt = 1;
@@ -22,11 +23,15 @@ void changeStudentPasswordCSV (string idInput, string newPassword)
                 }
                 else if (cnt == 2) {
                     password = tmp;
+                    ++cnt;
+                }
+                else if (cnt == 3) {
+                    classs = tmp;
                     if (id == idInput) {
-                        fileString = fileString + id + ',' + newPassword + '\n';
+                        fileString = fileString + id + ',' + newPassword + ',' + classs + '\n';
                     }
                     else {
-                        fileString = fileString + id + ',' + password + '\n';
+                        fileString = fileString + id + ',' + password + ',' + classs + '\n';
                     }
                 }
             }
