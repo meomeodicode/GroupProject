@@ -1,149 +1,115 @@
 #include <iostream>
+#include <iomanip>
 #include <SFML/Graphics.hpp>
-#include <iomanip>
-#include <string>
 #include "struct.h"
+
+using namespace std;
 using namespace sf;
-using namespace std;
 
-void showClassScoreboard(Class* classHead, string name, Semester* curr)
+void showClassScoreboard(Class* classHead, string semName, string className)
 {
-    // create the SFML window
-    RenderWindow window(VideoMode(1920, 1080), "Class Scoreboard");
-    // create the SFML font object
-    Font font;
-    font.loadFromFile("arial.ttf");
-
-    // create the SFML text object for displaying the class name
-    Text classNameText("Class: " + name, font, 24);
-    classNameText.setPosition(20, 20);
-
-    while (window.isOpen())
+    RenderWindow& app;
+    Font& font;
+    int page = 1;
+    if (classHead == nullptr)
     {
-        // handle SFML events
-        Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == Event::Closed)
-            {
-                window.close();
-            }
-        }
-
-        // clear the SFML window
-        window.clear(Color::White);
-
-        // draw the class name text
-        window.draw(classNameText);
-
-        // iterate over the students in the class and display their information
-        Class* cur = classHead;
-        int studentIndex = 0;
-        while (cur != nullptr)
-        {
-            if (cur->className == name)
-            {
-                Student* studentInfo = cur->studentHead;
-                Semester* tracking = curr;
-                while (studentInfo != nullptr)
-                {
-                    // create the SFML text object for displaying the student information
-                    Text studentText("", font, 16);
-                    studentText.setPosition(20, 60 + (studentIndex * 120));
-
-                    // set the student information text
-                    studentText.setString("Student ID: " + studentInfo->id +
-                        "\nName: " + studentInfo->firstName + " " + studentInfo->lastName +
-                        "\nGender: " + studentInfo->gender + ", Class: " + studentInfo->className +
-                        "\nDate of Birth: " + to_string(studentInfo->dateOfBirth.day) + "/" + to_string(studentInfo->dateOfBirth.month) + "/" + to_string(studentInfo->dateOfBirth.year) +
-                        "\nSocial ID: " + studentInfo->socialID +
-                        "\nOverall GPA: " + to_string(studentInfo->overallGPA));
-
-                    // iterate over the courses enrolled by the student and display their final marks
-                    Course* enrolled = studentInfo->courseEnrolHead;
-                    double semGPA = 0;
-                    int courseCount = 0;
-                    while (enrolled)
-                    {
-                        if (enrolled->courseName == (*tracking).courseHead->courseName)
-                        {
-                            semGPA += enrolled->finalMark;
-                            courseCount++;
-
-                            // add the course information to the student information text
-                            studentText.setString(studentText.getString() + "\nFinal Mark of " + enrolled->courseName + ": " + to_string(enrolled->finalMark));
-                        }
-                        enrolled = enrolled->pNext;
-                    }
-
-                    // add the semester GPA to the student information text
-                    if (courseCount > 0)
-                    {
-                        semGPA = semGPA / courseCount * 4;
-                    }
-                    studentText.setString(studentText.getString() + "\nSemester GPA: " + to_string(semGPA));
-                    window.draw(studentText);
-                    studentInfo = studentInfo->pNext;
-                    studentIndex++;
-                }
-                break;
-            }
-            cur = cur->pNext;
-        }
-
-        // display the SFML window
-        window.display();
-    }
-}
-
-
-
-
-/*#include "viewClassScoreBoard.h"
-#include <iostream>
-#include <iomanip>
-using namespace std;
-
-void showClassScoreboard(Class* classHead, string name, Semester curr)
-{
-    if (classHead == nullptr) 
-    {
-        cout << "Empty!"<<endl;
+        Text noClassText("Empty!", font, 30);
+        noClassText.setFillColor(Color::White);
+        noClassText.setPosition(100, 200);
+        app.draw(noClassText);
         return;
     }
     Class* cur = classHead;
-    while (cur != nullptr) {
-        if (cur->className == name) 
+
+    while (app.isOpen())
+    {
+        Event e;
+        while (app.pollEvent(e))
         {
-            Student* studentInfo = cur->studentHead;
-            Semester tracking = curr ;
-            while (studentInfo != nullptr) 
+            if (e.type == Event::Closed)
             {
-                cout << "Student ID: " << studentInfo->id << "\n";
-                cout << "Name: " << studentInfo->firstName << " " << studentInfo->lastName << "\n";
-                cout << "Gender: " << studentInfo->gender << ", Class: " << studentInfo->className << "\n";
-                cout << "Date of Birth: " << studentInfo->dateOfBirth.day << "/" << studentInfo->dateOfBirth.month << "/" << studentInfo->dateOfBirth.year << "\n";
-                cout << "Social ID: " << studentInfo->socialID << "\n";
-                cout << "Overall GPA: " << studentInfo->overallGPA << "\n";
-                Course* enrolled = studentInfo->courseEnrolHead;
-                double semGPA = 0;
-                while (enrolled)
+                app.close();
+            }
+        }
+    }
+    while (cur != nullptr)
+    {
+        if (cur->className == className)
+        {
+            // Image
+            Texture SchoolMoodle;
+            SchoolMoodle.loadFromFile("Src/Image/SchoolMoodle.png");
+            Sprite Background(SchoolMoodle);
+            Background.setPosition(0, 0);
+
+            // Text Shape
+            RectangleShape timeBox(Vector2f(220, 50));
+            timeBox.setFillColor(Color::White);
+            timeBox.setPosition(1500, 220);
+            timeBox.setOutlineThickness(2);
+            timeBox.setOutlineColor(Color(204, 204, 204));
+
+            Text timeText("", font, 20);
+            timeText.setFillColor(Color::Black);
+            timeText.setPosition(1520, 225);
+
+            Text titleText("Class Scoreboard", font, 40);
+            titleText.setFillColor(Color::White);
+            titleText.setPosition(100, 100);
+
+            app.draw(Background);
+            app.draw(timeBox);
+            app.draw(timeText);
+            app.draw(titleText);
+
+            Student* studentInfo = cur->studentHead;
+            int count = 0; // student index
+            while (studentInfo != nullptr)
+            {
+                Text studentID(to_string(studentInfo->id), font, 20);
+                studentID.setPosition(100, 200 + 50 * count);
+                app.draw(studentID);
+
+                Text studentName(studentInfo->firstName + " " + studentInfo->lastName, font, 20);
+                studentName.setPosition(250, 200 + 50 * count);
+                app.draw(studentName);
+
+                Text studentGender(studentInfo->gender, font, 20);
+                studentGender.setPosition(600, 200 + 50 * count);
+                app.draw(studentGender);
+
+                Text studentDOB(to_string(studentInfo->dateOfBirth.day) + "/" + to_string(studentInfo->dateOfBirth.month) + "/" + to_string(studentInfo->dateOfBirth.year), font, 20);
+                studentDOB.setPosition(700, 200 + 50 * count);
+                app.draw(studentDOB);
+
+                Text studentSocialID(studentInfo->socialID, font, 20);
+                studentSocialID.setPosition(900, 200 + 50 * count);
+                app.draw(studentSocialID);
+                Course* course = studentInfo->courseEnrolHead;
+                double overallGPA = 0;
+                int courseCount = 0;
+                while (course)
                 {
-                    //studentInfo->courseEnrolHead->courseName
-                    if (enrolled->courseName == tracking.courseHead->courseName)
+                    string name = course->sem->name;
+                    if (name == semName)
                     {
-                        semGPA += enrolled->finalMark;
-                        cout << "Final Mark of" << enrolled->courseName << ":" << enrolled->finalMark << "\n";
+                        Text TotalMark(course->totalMark, font, 20);
+                        TotalMark.setPosition(1100, 200 + 50 * count);
+                        app.draw(TotalMark);
+                        overallGPA += course->totalMark * 4;
+                        courseCount++;
                     }
-                    enrolled = enrolled->pNext;
+                    course = course->pNext;
                 }
-                cout << "Semester GPA:" << semGPA * 4 << endl;
+                overallGPA /= courseCount;
+                Text OverallGPA(overallGPA, font, 20);
+                OverallGPA.setposition(1300, 200 + 50 * count);
+                app.draw(OverallGPA);
+                count++;
                 studentInfo = studentInfo->pNext;
             }
-            return;
+            break;
         }
         cur = cur->pNext;
     }
-
-    cout << "Class " << name << " not found!";
-}*/
+}
